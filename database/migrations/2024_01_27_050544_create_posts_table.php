@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('author_id');
             $table->foreign('author_id')->references('id')->on('users');
             $table->text('raw');
             $table->text('body');
@@ -27,6 +28,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('posts', function(Blueprint $table) {
+            $table->dropForeign('posts_author_id_foreign');
+        });
+
         Schema::dropIfExists('posts');
     }
 };
