@@ -37,5 +37,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/post/create', [PostController::class, 'create']);
     Route::get('/post/edit/{post}', [PostController::class, 'edit']);
     Route::post('/post/store', [PostController::class, 'store']);
-    Route::put('/post/update', [PostController::class, 'update']);
+    Route::put('/post/update/{post}', [PostController::class, 'update']);
 });
